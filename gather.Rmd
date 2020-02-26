@@ -11,7 +11,7 @@ library(tidyverse)
 ```
 
 ```{r}
-tntell <- read.csv("./textntell.csv") %>% .[, c(1,5,7,8,9,16)]
+tntell <- read.csv("./textntell.csv") %>% select(Start, Tracker, Location, Guest, Mobile.Number, Comment)
 ```
 
 ```{r cursory plot}
@@ -19,7 +19,7 @@ tntell$arranged <- tntell$Location %>% fct_relevel("Annenberg", "Lowell", "Dunst
 
 ggplot(tntell, aes(x = arranged)) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
 
-# what about a "today's menu" section that says how people in the past have
+# what about a "today's menu" section that scrapes site and says how people in the past have
 # reacted to that entree
 ```
 
