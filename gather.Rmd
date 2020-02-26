@@ -22,7 +22,7 @@ tntell %>% filter(Location == "Kirkland") %>% count()
 
 ggplot(tntell, aes(x = forcats::fct_rev(arranged))) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
        
-ggplot(tntell, aes(x = reorder(Location, -perc))) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
+ggplot(tntell, aes(x = Location)) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
 
 # do comments per person
 # crankiest students
