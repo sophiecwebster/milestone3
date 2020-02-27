@@ -5,9 +5,9 @@ date: "2/25/2020"
 output: html_document
 ---
 
-### About Me
+## About Me
 
-Hi! I'm Sophie, a junior at Harvard College studying Integrative Biology with a secondary in Earth and Planetary Sciences. I love singing with <a href="pitches.org">The Radcliffe Pitches</a>, playing the banjo, writing comedy for <a href="satirev.org"><em> Satire V</em></a>, and jogging slowly around the Charles River. This is my final project for Gov 1005, a class on R-driven data science. Feel free to reach out to me by <a href="mailto:sophiewebster@college.harvard.edu">email</a> or on <a href="https://www.linkedin.com/in/sophie-webster-651b03171/"> LinkedIn</a>.
+Hi! I'm Sophie, a junior at Harvard College studying Integrative Biology with a secondary in Earth and Planetary Sciences. I love singing with <a href="pitches.org">The Radcliffe Pitches</a>, playing the banjo, writing comedy for <a href="satirev.org"><em> Satire V</em></a>, and jogging slowly around the Charles River. This is my final project for <a href="https://www.davidkane.info/files/gov_1005_spring_2020.html">Gov 1005</a>, a class on R-driven data science. Feel free to reach out to me by <a href="mailto:sophiewebster@college.harvard.edu">email</a> or on <a href="https://www.linkedin.com/in/sophie-webster-651b03171/"> LinkedIn</a>.
 
 
 Final Project Milestone #3 due Friday, February 28. Create a new Github repo.
