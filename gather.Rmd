@@ -18,11 +18,17 @@ tntell <- read.csv("./textntell.csv", stringsAsFactors = FALSE) %>% select(Start
 tntell$arranged <- tntell$Location %>% fct_relevel("Annenberg", "Lowell", "Dunster", "Cabot", "Quincy", "Mather", "Pforzheimer", "Winthrop", "Currier", "Leverett", "Eliot", "Adams", "Hillel", "Kirkland", "FlyBy", "Dudley")
 
 # for loop thru all locations? maybe make new frame for number of and folks per house
-tntell %>% filter(Location == "Kirkland") %>% count()
+# tntell %>% filter(Location == "Dunster") %>% count()
+# 
+# for(i in unique(tntell$Location[1:16])){
+#   filter(Location = "i") %>% count()
+# }
+
+per_cap <- data.frame(House = unique(tntell$Location), Student.Pop = c(371, 414, 476, 430, 408, 466, 381, 361, 1715, 388, NA, 403, 515, NA, 390, NA), Messages = c(143, 361, 255, 61, 143, 41, 163, 275, 429, 276, NA, 189, 73, NA, 19, NA)) %>% filter(!is.na(Student.Pop))
 
 ggplot(tntell, aes(x = forcats::fct_rev(arranged))) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
        
-ggplot(tntell, aes(x = Location)) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
+ggplot(per_cap, aes(x = reorder(House, Messages/Student.Pop), y = (Messages/Student.Pop))) + geom_col(fill = "#f15b29") + coord_flip() + ggtitle("Messages Per Capita By Harvard House") + labs(y = "", x = "") + theme_light() #+ labs(y = "Messages Per Capita")
 
 # do comments per person
 # crankiest students
