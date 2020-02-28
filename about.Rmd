@@ -8,13 +8,34 @@ output: html_document
 <a href="https://dining.harvard.edu/">HUDS</a> is Harvard's dining service and the oldest collegiate foodservice in America. They serve an estimated 25,000 meals daily and 5 million on an annual basis. Each undergraduate house at Harvard has its own servery, kitchen, and dining hall. HUDS has a feedback service for undergraduates, supported online, by physical cards available in the dining halls, and by text. Students can message a number and send an SMS that relays their location and comment. HUDS house managers respond within 24 hours, fielding the students' questions, accolades, and concerns. 
 
 ## The Data
-Having used this service many times (and grown very fond of it in the process), I thought it would be fascinating to look at the data attached to these messages: the timestamps, house of origin, and, of course, content. I visited Crista Martin, HUDS' Director of Strategic Communications, who graciously offered me a year's worth of "Text 'N' Tell" (as it was once called) data from 2019. 
+Having used this service many times (and grown very fond of it in the process), I thought it would be fascinating to look at the data attached to each message: the timestamps, the house of origin, and, of course, the content. I visited Crista Martin, HUDS' Director for Strategic Initiatives & Communications, who graciously offered me a year's worth of "Text 'N' Tell" (as it was once called) data from 2019, parceled in a CSV file. With some cursory tinkering, I made a few informative plots to get a sense of where these messages are often coming from. <br>
 
-This data is available in my <a href="https://github.com/sophiecwebster/milestone3"> Github repository </a>.
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+```{r}
+tntell <- read.csv("./textntell.csv", stringsAsFactors = FALSE) %>% select(Start, Tracker, Location, Mobile.Number, Comment)
+```
+
+```{r cursory plot}
+tntell$arranged <- tntell$Location %>% fct_relevel("Annenberg", "Lowell", "Dunster", "Cabot", "Quincy", "Mather", "Pforzheimer", "Winthrop", "Currier", "Leverett", "Eliot", "Adams", "Hillel", "Kirkland", "FlyBy", "Dudley")
+
+per_cap <- data.frame(House = unique(tntell$Location), Student.Pop = c(371, 414, 476, 430, 408, 466, 381, 361, 1715, 388, NA, 403, 515, NA, 390, NA), Messages = c(143, 361, 255, 61, 143, 41, 163, 275, 429, 276, NA, 189, 73, NA, 19, NA)) %>% filter(!is.na(Student.Pop))
+
+ggplot(tntell, aes(x = forcats::fct_rev(arranged))) + geom_bar(fill = "#f15b29") + coord_flip() + ggtitle("Who Sent HUDS the Most Messages in 2019?") + labs(y = "", x = "") + theme_light()
+       
+ggplot(per_cap, aes(x = reorder(House, Messages/Student.Pop), y = (Messages/Student.Pop))) + geom_col(fill = "#f15b29") + coord_flip() + ggtitle("Messages Per Capita By Harvard House") + labs(y = "", x = "") + theme_light() #+ labs(y = "Messages Per Capita")
+```
+
+Yada yada this is what I will do later, where I'll get that data. 
+
+This data is available in my <a href="https://github.com/sophiecwebster/milestone3"> Github repository</a>.
 
 ## About Me
 
-Thanks for stopping by! I'm Sophie, a junior at Harvard College studying Integrative Biology with a secondary in Earth and Planetary Sciences. I love singing with <a href="pitches.org">The Radcliffe Pitches</a>, playing the banjo, writing comedy for <a href="satirev.org"><em> Satire V</em></a>, and jogging slowly around the Charles River. This is my final project for <a href="https://www.davidkane.info/files/gov_1005_spring_2020.html">Gov 1005</a>, a class on R-driven data science. Feel free to reach out to me by <a href="mailto:sophiewebster@college.harvard.edu">email</a> or on <a href="https://www.linkedin.com/in/sophie-webster-651b03171/"> LinkedIn</a>.
+My name is Sophie, and I'm a junior at Harvard College studying Integrative Biology with a secondary in Earth and Planetary Sciences. I love singing with <a href="pitches.org">The Radcliffe Pitches</a>, playing the banjo, writing comedy for <a href="satirev.org"><em> Satire V</em></a>, and jogging slowly around the Charles River. This is my final project for <a href="https://www.davidkane.info/files/gov_1005_spring_2020.html">Gov 1005</a>, a class on R-driven data science. Feel free to reach out to me by <a href="mailto:sophiewebster@college.harvard.edu">email</a> or on <a href="https://www.linkedin.com/in/sophie-webster-651b03171/"> LinkedIn</a>. Thanks for stopping by! 
 
 
 Final Project Milestone #3 due Friday, February 28. Create a new Github repo.
