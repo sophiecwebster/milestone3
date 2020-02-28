@@ -5,9 +5,12 @@ date: "2/25/2020"
 output: html_document
 ---
 ## Background
+<a href="https://dining.harvard.edu/">HUDS</a> is Harvard's dining service and the oldest collegiate foodservice in America. They serve an estimated 25,000 meals daily and 5 million on an annual basis. Each undergraduate house at Harvard has its own servery, kitchen, and dining hall. HUDS has a feedback service for undergraduates, supported online, by physical cards available in the dining halls, and by text. Students can message a number and send an SMS that relays their location and comment. HUDS house managers respond within 24 hours, fielding the students' questions, accolades, and concerns. 
 
 ## The Data
-check out my <a href="https://github.com/sophiecwebster/milestone3"> repo </a>.
+Having used this service many times (and grown very fond of it in the process), I thought it would be fascinating to look at the data attached to these messages: the timestamps, house of origin, and, of course, content. I visited Crista Martin, HUDS' Director of Strategic Communications, who graciously offered me a year's worth of "Text 'N' Tell" (as it was once called) data from 2019. 
+
+This data is available in my <a href="https://github.com/sophiecwebster/milestone3"> Github repository </a>.
 
 ## About Me
 
