@@ -44,3 +44,13 @@ ggplot(per_cap, aes(x = reorder(House, Messages/Student.Pop), y = (Messages/Stud
 # is this a representative sample of opinions?
 ```
 
+```{r}
+library(readxl)
+
+menu <- read_excel("./FY20 Winter Menu 11052019.xlsx")
+   
+   meal <- c(rep("Breakfast",24),rep("Lunch",19), rep("Dinner", 16))
+   menu <- cbind(menu, meal)
+   menu <- menu[-c(48),]
+```
+
